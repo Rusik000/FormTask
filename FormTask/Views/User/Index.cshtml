@@ -1,0 +1,86 @@
+﻿@model FormTask.Models.UserViewModel
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: rgb(162, 205, 242);
+            position: relative;
+        }
+
+
+        .user {
+            width: 50%;
+            height: 40vh;
+            border: 3px solid black;
+            margin: auto;
+            padding-left: 30px;
+            margin-top: 10px;
+        }
+
+        .imgdiv {
+            display: inline-flex;
+        }
+
+        h1 {
+            font-size: 2em;
+            font-weight: lighter;
+            margin-right: 10px;
+        }
+
+        .imgdiv > img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .rightarrow {
+            width: 90px;
+            height: 30px;
+            position: absolute;
+            right: 200px;
+            top: 23px;
+        }
+
+        input{
+            width: 150px;
+            height: 50px;
+            font-size: 1.2em;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+    </style>
+</head>
+<body>
+    @foreach (var user in Model.Users)
+    {
+        <div class="user">
+            <h1>Id : @user.Id</h1>
+            <h1>Name : @user.Name</h1>
+            <h1>Surname : @user.Surname</h1>
+            <h1>Age : @user.Age</h1>
+            <div class="imgdiv">
+                <h1>Image :</h1>
+                <img src="~/images/@user.ImagePath">
+            </div>
+        </div>
+    }
+    <img class="rightarrow" src="~/images/arrow.png" alt="right">
+    <input type="button"  value="Go to registration" onclick="location.href='@Url.Action("Add", "User")'" />
+</body>
+
+</html>

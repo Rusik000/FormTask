@@ -1,0 +1,93 @@
+﻿@model FormTask.Models.UserHelperViewModel
+
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+    <style>
+        body {
+            background-color: bisque;
+            padding: 0;
+            margin: 0;
+            position: relative;
+        }
+
+
+        h1 {
+            position: absolute;
+            top: -60px;
+            left: 340px;
+            color: green;
+        }
+
+        form {
+            border: 4px solid green;
+            width: 50%;
+            height: 50vh;
+            margin: auto;
+            margin-top: 150px;
+        }
+
+
+        label {
+            margin-left: 200px;
+            font-size: 1.2em;
+        }
+
+        input {
+            width: 150px;
+            height: 20px;
+            margin-top: 10px;
+            font-size: 1em;
+        }
+
+
+        .imginput{
+            border:2px solid red;
+            height:25px;
+        }
+
+        button {
+            width: 80px;
+            height: 30px;
+            margin-left: 270px;
+            margin-top: 50px;
+            font-size: 1.2em;
+            border: 1px solid black;
+            background-color: rgb(39, 212, 0);
+            color: white;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add User</h1>
+    <form asp-controller="User" asp-action="Add" enctype="multipart/form-data">
+        <label>Id:</label>
+        <input asp-for="@Model.User.Id" />
+        <br />
+        <label>Name:</label>
+        <input asp-for="@Model.User.Name" />
+        <br />
+        <label>Surname:</label>
+        <input asp-for="@Model.User.Surname" />
+        <br />
+        <label>Age:</label>
+        <input asp-for="@Model.User.Age" />
+        <br />
+        <label>Upload Image</label>
+        <input class="imginput" type="file" asp-for="@Model.File">
+
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>
